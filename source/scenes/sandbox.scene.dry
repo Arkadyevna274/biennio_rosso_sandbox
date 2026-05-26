@@ -8,6 +8,8 @@ go-to: sandbox_menu
 
 @sandbox_menu
 
+- @clear_hand: Clear Cards
+- @make_adv_available: Make Advisors Available
 - @editresources: Edit Resources
 - @editpara_resources: Edit Paramilitary Resources
 - @editbudget: Edit Budget
@@ -38,6 +40,27 @@ go-to: sandbox_menu
 - @subtract20resources: Subtract 20 Resources
 - @subtract100resources: Subtract 100 Resources
 - @returnsandbox: Return To Sandbox
+
+@clear_hand
+go-to: sandbox_menu
+on-arrival: {!
+Q.advisor_action_timer = 6;
+if (Q.difficulty >= 0) {
+    window.dendryUI.dendryEngine.state.currentHands['main'] = [];
+} else {
+    window.dendryUI.dendryEngine.state.currentHands['main.main_easy'] = [];
+}
+!}
+
+Cleared all cards.
+
+@make_adv_available
+go-to: sandbox_menu
+on-arrival: {!
+Q.advisor_action_timer = 0;
+!}
+
+Made advisor actions available.
 
 @add10resources
 go-to: sandbox_menu
